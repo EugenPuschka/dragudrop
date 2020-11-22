@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+    <title>Map at a specified location</title>
+    <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.1/mapsjs-ui.css" />
+    <link rel="stylesheet" type="text/css" href="demo.css" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="../template.css" />
+    
+</head>
+<body>
+
+	<div id="map"></div>
+	<script>
+
+		const platform = new H.service.Platform({
+			"apikey:": "OM92mqh2zWOSzDS_qjXq68K090AlYobsyAGCbY5MujI"
+		});
+	
+
+	const M = {
+		M.Container = document.getElementById('map');
+
+		//Store initialized platform object
+		M.Platform = new H.service.Platform(M.Init);
+
+		//Store reference to layer object
+		H.Layer = M.Platform.createDefaultLayer();
+
+		M.Map = new H.Map(M.Container, M.Layer.vector.normal.map, {
+			center: {lat:M.Lat, lng: M.Lng},
+			zoom: M.Zoom,
+			pixelRatio: window.devicePixelRatio || 1
+		});
+
+		M.Behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(M.Map));
+
+		M.UI = H.ui.UI.createDefault(M.Map, M.Layer);
+
+		window.addEventListener('resize', () => M.Map.getViewPort().resize());
+
+	
+	
+
+	</script>
+
+
+	
+<canvas id="canvas"> </canvas>	
+<div id="container">
+	<div id="tasks">
+		<div id="notification">Aufgabenliste ist leer</div>
+		<ul id="tasksList">
+			
+		</ul>
+	</div>
+	<div id="footer">
+	<input type="text" id="taskInput" placeholder="Deine Aufgabe..."></input>
+	<button id="taskAdd">+</button>
+	</div>
+</div>
+	<div class="hero">
+		<div class="wrapper">
+
+			<ul class="list">
+				<li class="__listcaption">Geplannt</li>
+				<li class="__listcaption">In Bearbeitung</li>
+				<li class="__listcaption">Test</li>
+				<li class="__listcaption">Fertig</li>
+				<li class="list__cell js-cell">
+					<div class="list__card js-card" draggable="true">
+						<div class="list__card-header">
+							task title
+						</div>
+						<div class="list__card-info">
+							task deskription
+						</div>
+					</div>
+				</li>
+				<li class="list__cell js-cell"></li>
+				<li class="list__cell js-cell"></li>
+				<li class="list__cell js-cell"></li>
+			</ul>
+
+		</div>
+	</div>
+
+
+    <script type="text/javascript" src='demo.js'></script>
+	<script src="dragdop.js"></script> 
+</body>
+</html>
